@@ -1,348 +1,923 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Happy Birthday 🎉</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>З Днем Народження</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-      body {
-        margin: 0;
-        background: linear-gradient(135deg, #FFF2E1, #FFA94D);
-        overflow: hidden;
-        font-family: 'Arial', sans-serif;
-      }
-
-      .happy-birthday-banner {
-        text-align: center;
-        margin-top: 50px;
-        font-size: 48px;
-        font-family: 'Pacifico', cursive;
-        color: #fff;
-        text-shadow: 2px 2px 5px #f4801b;
-      }
-
-      .candle-count-display {
-        text-align: center;
-        margin: 10px auto 20px auto;
-        font-size: 20px;
-        background-color: #fff5f7;
-        padding: 10px 20px;
-        border-radius: 12px;
-        border: 2px solid #f4801b86;
-        width: fit-content;
-        color: #fc8200;
-      }
-
-      .candle-count-display span {
-        font-weight: bold;
-        color: #fc8200;
-      }
-
-      .cake {
-        position: relative;
-        width: 250px;
-        height: 200px;
-        margin: 50px auto;
-        z-index: 2;
-      }
-
-      .plate {
-        width: 270px;
-        height: 110px;
-        position: absolute;
-        bottom: -10px;
-        left: -10px;
-        background-color: #ccc;
-        border-radius: 50%;
-        box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
-      }
-
-      .layer {
-        display: block;
-        width: 250px;
-        height: 100px;
-        border-radius: 50%;
-        background: #FFD1DF;
-        position: absolute;
-      }
-
-      .layer-top { top: 0; }
-      .layer-middle { top: 33px; }
-      .layer-bottom { top: 66px; }
-
-      .icing {
-        top: 2px;
-        left: 5px;
-        background-color: #f0e4d0;
-        width: 240px;
-        height: 90px;
-        border-radius: 50%;
-        position: absolute;
-        z-index: 1;
-      }
-      .icing:before {
-        content: "";
-        position: absolute;
-        top: 4px;
-        right: 5px;
-        bottom: 6px;
-        left: 5px;
-        background-color: #d5ffff;
-        border-radius: 50%;
-        box-shadow: 0 0 4px #f0e4d0, 0 0 4px #f0e4d0;
-        z-index: 1;
-      }
-
-      .drip {
-        width: 50px;
-        height: 60px;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-        background-color: #d5ffff;
-        position: absolute;
-      }
-
-      .drip1 {
-        top: 53px;
-        left: 5px;
-        transform: skewY(15deg);
-        height: 48px;
-        width: 40px;
-      }
-      .drip2 {
-        top: 69px;
-        left: 181px;
-        transform: skewY(-15deg);
-      }
-      .drip3 {
-        top: 54px;
-        left: 90px;
-        width: 80px;
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
-      }
-
-      .candle {
-        background-color: #7B020B;
-        width: 12px;
-        height: 35px;
-        border-radius: 6px/3px;
-        position: absolute;
-        top: -20px;
-        z-index: 10;
-      }
-      .candle:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 12px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: #ad030f;
-      }
-
-      .flame {
-        position: absolute;
-        background-color: orange;
-        width: 10px;
-        height: 25px;
-        border-radius: 8px 8px 8px 8px/20px 20px 8px 8px;
-        top: -34px;
-        left: 50%;
-        margin-left: -7.5px;
-        z-index: 10;
-        box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5);
-        animation: flicker 1s ease-in-out alternate infinite;
-        transform-origin: 50% 90%;
-      }
-      .candle.out .flame {
-        display: none;
-      }
-
-      @keyframes flicker {
-        0% { transform: skewX(5deg); }
-        25% { transform: skewX(-5deg); }
-        50% { transform: skewX(10deg); }
-        75% { transform: skewX(-10deg); }
-        100% { transform: skewX(5deg); }
-      }
-
-      #confettiCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 0;
-        pointer-events: none;
-      }
-
-      .audio-player {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-      }
-      
-    </style>
-  </head>
-  <body>
-    <canvas id="confettiCanvas"></canvas>
-    <div class="happy-birthday-banner">Happy Birthday Rajat!</div>
-    <div class="candle-count-display">
-      Number of candles on cake: <span id="candleCount">0</span>
-    </div>
-    <div class="cake-container">
-      <div class="cake">
-        <div class="plate"></div>
-        <div class="layer layer-bottom"></div>
-        <div class="layer layer-middle"></div>
-        <div class="layer layer-top"></div>
-        <div class="icing"></div>
-        <div class="drip drip1"></div>
-        <div class="drip drip2"></div>
-        <div class="drip drip3"></div>
-      </div>
-    </div>
-    <div class="audio-player">
-      <audio controls>
-        <source src="birthday.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-    <script>
-      const canvas = document.getElementById("confettiCanvas");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const confettiCount = 150;
-      const confetti = [];
-      const colors = ["#ff4081", "#ffd740", "#69f0ae", "#40c4ff", "#ff80ab"];
-
-      for (let i = 0; i < confettiCount; i++) {
-        confetti.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 6 + 4,
-          d: Math.random() * confettiCount,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          tilt: Math.floor(Math.random() * 10) - 10,
-          tiltAngleIncremental: Math.random() * 0.07 + 0.05,
-          tiltAngle: 0
-        });
-      }
-
-      function drawConfetti() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < confettiCount; i++) {
-          const c = confetti[i];
-          ctx.beginPath();
-          ctx.lineWidth = c.r / 2;
-          ctx.strokeStyle = c.color;
-          ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
-          ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 4);
-          ctx.stroke();
-        }
-        updateConfetti();
-      }
-
-      function updateConfetti() {
-        for (let i = 0; i < confettiCount; i++) {
-          const c = confetti[i];
-          c.tiltAngle += c.tiltAngleIncremental;
-          c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
-          c.x += Math.sin(c.d);
-          c.tilt = Math.sin(c.tiltAngle) * 15;
-
-          if (c.y > canvas.height) {
-            c.y = -10;
-            c.x = Math.random() * canvas.width;
-          }
-        }
-      }
-
-      (function animateConfetti() {
-        requestAnimationFrame(animateConfetti);
-        drawConfetti();
-      })();
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const cake = document.querySelector(".cake");
-        const candleCountDisplay = document.getElementById("candleCount");
-        let candles = [];
-
-        function updateCandleCount() {
-          const activeCandles = candles.filter(
-            (candle) => !candle.classList.contains("out")
-          ).length;
-          candleCountDisplay.textContent = activeCandles;
+        /* CSS classes for new fonts */
+        .great-vibes-regular {
+            font-family: "Great Vibes", cursive;
+            font-weight: 400;
+            font-style: normal;
         }
 
-        function addCandle(left, top) {
-          const candle = document.createElement("div");
-          candle.className = "candle";
-          candle.style.left = left + "px";
-          candle.style.top = top + "px";
-
-          const flame = document.createElement("div");
-          flame.className = "flame";
-          candle.appendChild(flame);
-
-          cake.appendChild(candle);
-          candles.push(candle);
-          updateCandleCount();
+        .montserrat-font {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
         }
 
-        cake.addEventListener("click", function (event) {
-          const rect = cake.getBoundingClientRect();
-          const left = event.clientX - rect.left;
-          const top = event.clientY - rect.top;
-          addCandle(left, top);
-        });
-      });
-        // Mic-based candle blowing logic
-        navigator.mediaDevices.getUserMedia({ audio: true })
-          .then(function(stream) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const source = audioContext.createMediaStreamSource(stream);
-            const analyser = audioContext.createAnalyser();
-            source.connect(analyser);
-            analyser.fftSize = 512;
-      
-            const dataArray = new Uint8Array(analyser.frequencyBinCount);
-      
-            function checkVolume() {
-              analyser.getByteFrequencyData(dataArray);
-              const volume = dataArray.reduce((a, b) => a + b) / dataArray.length;
-      
-              // Threshold to detect a "blow"
-              if (volume > 60) {
-                blowOutCandles();
-              }
-      
-              requestAnimationFrame(checkVolume);
+        body {
+            margin: 0;
+            background-color: transparent;
+            background-image: url('img2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 8vw;
+            font-family: 'Great Vibes', cursive;
+            color: #FFFFFF;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        
+        .wish-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #FFD700;
+            font-size: 4vw;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .wish-text.small {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            padding: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .blowing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .blowing-joke {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8em;
+            color: #FFD700;
+            margin-top: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Стилі для нейтральних кнопок */
+        .action-button,
+        .video-button,
+        .letter-button {
+            background-color: #FFFFFF;
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .action-button:hover,
+        .video-button:hover,
+        .letter-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .action-button:active,
+        .video-button:active,
+        .letter-button:active {
+            background-color: #e0e0e0;
+            transform: translateY(0);
+        }
+
+        .action-button.instructional {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgba(0, 0, 0, 0.6);
+            cursor: default;
+            pointer-events: none;
+        }
+        
+        .action-button:disabled {
+            background-color: rgba(200, 200, 200, 0.7);
+            cursor: not-allowed;
+            color: #888;
+        }
+
+        .photo-gallery {
+            /* Masonry layout for desktop */
+            column-count: 3;
+            column-gap: 20px;
+            padding: 20px;
+            display: block; /* Default to block for desktop */
+        }
+        
+        .photo-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-caption {
+            padding: 15px;
+            text-align: center;
+            color: #333;
+            font-size: 0.9em;
+        }
+        
+        /* Слайдер-карусель для мобільних пристроїв */
+        .photo-slider {
+            display: none; /* Приховуємо на десктопі */
+            padding: 20px 0;
+            position: relative;
+            width: 100%;
+        }
+        
+        .photo-slider-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+            gap: 15px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .slider-item {
+            flex-shrink: 0;
+            width: calc(100% - 40px);
+            max-width: 400px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            scroll-snap-align: center;
+        }
+        
+        .slider-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            object-fit: contain;
+        }
+
+        .video-button-container,
+        .letter-button-container {
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+        
+        .letter-button-container {
+            margin-top: 20px; /* Додаємо відступ після блоку торта */
+        }
+
+
+        .fullscreen-video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-video {
+            width: 90%;
+            max-width: 800px;
+            height: auto;
+        }
+
+        .close-video-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        
+        .cake-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+        
+        .wish-text-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cake-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 60vh;
+        }
+        
+        .cake {
+            position: relative;
+            width: 250px;
+            height: 200px;
+        }
+        
+        .cake > * {
+            position: absolute;
+        }
+
+        .plate {
+            width: 270px;
+            height: 110px;
+            bottom: -10px;
+            left: -10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .layer {
+            display: block;
+            width: 250px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffc2d1;
+            box-shadow: 0 2px 0px #fb6f92, 0 4px 0px #ff8fab, 0 6px 0px #ff8fab, 0 8px 0px #ff8fab, 0 10px 0px #ff8fab, 0 12px 0px #ff8fab, 0 14px 0px #ff8fab, 0 16px 0px #ff8fab, 0 18px 0px #ff8fab, 0 20px 0px #ff8fab, 0 22px 0px #ff8fab, 0 24px 0px #ff8fab, 0 26px 0px #ff8fab, 0 28px 0px #ff8fab, 0 30px 0px #ff8fab;
+        }
+
+        .layer-top { top: 0; }
+        .layer-middle { top: 33px; }
+        .layer-bottom { top: 66px; }
+
+        .icing {
+            top: 2px;
+            left: 5px;
+            background-color: #f0e4d0;
+            width: 240px;
+            height: 90px;
+            border-radius: 50%;
+        }
+
+        .icing:before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 5px;
+            bottom: 6px;
+            left: 5px;
+            background-color: #f4ebdc;
+            box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .drip {
+            display: block;
+            width: 50px;
+            height: 60px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            background-color: #f0e4d0;
+        }
+
+        .drip1 { top: 53px; left: 5px; transform: skewY(15deg); height: 48px; width: 40px; }
+        .drip2 { top: 69px; left: 181px; transform: skewY(-15deg); }
+        .drip3 { top: 54px; left: 90px; width: 80px; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; }
+
+        .candle {
+            background-color: #ddce9c;
+            width: 12px;
+            height: 35px;
+            border-radius: 6px/3px;
+            position: absolute;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .candle:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #e8e5a4;
+            transition: background-color 0.5s ease;
+        }
+
+        .flame {
+            position: absolute;
+            background-color: orange;
+            width: 10px;
+            height: 25px;
+            border-radius: 8px 8px 8px 8px/20px 20px 8px 8px;
+            top: -34px;
+            left: 50%;
+            margin-left: -7.5px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+            transform-origin: 50% 90%;
+            animation: flicker 1s ease-in-out alternate infinite;
+        }
+
+        .candle.out .flame { display: none; }
+        .candle.out { background-color: #ddce9c; box-shadow: none; }
+        .candle.out:before { background-color: #666; }
+
+        @keyframes flicker {
+            0% { transform: skewX(5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2); }
+            25% { transform: skewX(-5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5); }
+            50% { transform: skewX(10deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3); }
+            75% { transform: skewX(-10deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4); }
+            100% { transform: skewX(5deg); box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5); }
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #audio-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
+            color: #000000;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        #volume-meter {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 20px;
+            height: 100px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #volume-bar {
+            width: 100%;
+            background-color: #ff69b4;
+            position: absolute;
+            bottom: 0;
+            transition: height 0.1s ease;
+        }
+        
+        /* Модальне вікно для листа */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 600px;
+            text-align: left;
+            position: relative;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            text-shadow: none;
+        }
+
+        .modal-content p {
+            color: #333333;
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        /* Медіа-запити для адаптивності на мобільних пристроях */
+        @media (max-width: 600px) {
+            .photo-gallery { display: none; }
+            .photo-slider { display: block; }
+            .main-title { font-size: 10vw; }
+            .wish-text { font-size: 6vw; }
+            .wish-text.small { font-size: 1em; }
+            .blowing-joke { font-size: 0.7em; }
+            .action-button, .video-button, .letter-button { font-size: 1em; }
+            #audio-toggle { width: 40px; height: 40px; font-size: 20px; top: 10px; right: 10px; }
+            .cake { transform: scale(0.8); }
+            #volume-meter { top: 60px; right: 10px; width: 15px; height: 80px; }
+            .modal-content { padding: 20px; margin: 10% auto; }
+            .modal-header h2 { font-size: 1.5em; }
+            .modal-content p { font-size: 0.9em; }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .photo-gallery {
+                column-count: 2;
             }
-      
-            checkVolume();
-          })
-          .catch(function(err) {
-            console.error("Microphone access denied:", err);
-          });
-      
-        function blowOutCandles() {
-          const candles = document.querySelectorAll(".candle");
-          candles.forEach(candle => {
-            candle.classList.add("out");
-          });
-          document.getElementById("candleCount").textContent = 0;
+            .main-title { font-size: 6vw; }
+            .wish-text { font-size: 4vw; }
+            .blowing-joke { font-size: 0.9em; }
         }
+    </style>
+</head>
+<body>
+    <canvas id="confettiCanvas"></canvas>
+    
+    <header class="header">
+        <h1 class="main-title great-vibes-regular">Happy Birthday Olena!</h1>
+    </header>
 
+    <button id="audio-toggle" class="fa-solid fa-music"></button>
+    <div id="volume-meter"><div id="volume-bar"></div></div>
+
+    <!-- Галерея Masonry для десктопу -->
+    <section class="photo-gallery">
+        <div class="photo-item"><img src="https://placehold.co/400x600?text=Фото+1" alt="Placeholder Photo 1"></div>
+        <div class="photo-item"><img src="https://placehold.co/400x500?text=Фото+2" alt="Placeholder Photo 2"></div>
+        <div class="photo-item"><img src="https://placehold.co/400x700?text=Фото+3" alt="Placeholder Photo 3"></div>
+        <div class="photo-item"><img src="https://placehold.co/400x450?text=Фото+4" alt="Placeholder Photo 4"></div>
+        <div class="photo-item"><img src="https://placehold.co/400x550?text=Фото+5" alt="Placeholder Photo 5"></div>
+        <div class="photo-item"><img src="https://placehold.co/400x650?text=Фото+6" alt="Placeholder Photo 6"></div>
+    </section>
+
+    <!-- Слайдер-карусель для мобільного -->
+    <section class="photo-slider">
+        <div class="photo-slider-wrapper">
+            <div class="slider-item"><img src="https://placehold.co/400x600?text=Фото+1" alt="Placeholder Photo 1"></div>
+            <div class="slider-item"><img src="https://placehold.co/400x500?text=Фото+2" alt="Placeholder Photo 2"></div>
+            <div class="slider-item"><img src="https://placehold.co/400x700?text=Фото+3" alt="Placeholder Photo 3"></div>
+            <div class="slider-item"><img src="https://placehold.co/400x450?text=Фото+4" alt="Placeholder Photo 4"></div>
+            <div class="slider-item"><img src="https://placehold.co/400x550?text=Фото+5" alt="Placeholder Photo 5"></div>
+            <div class="slider-item"><img src="https://placehold.co/400x650?text=Фото+6" alt="Placeholder Photo 6"></div>
+        </div>
+    </section>
+
+    <div class="video-button-container">
+        <button id="show-video-button" class="video-button montserrat-font">Перейти до відео</button>
+    </div>
+
+    <div id="fullscreen-video-container" class="fullscreen-video-container">
+        <button id="close-video-button" class="close-video-button">×</button>
+        <iframe id="fullscreen-video" class="fullscreen-video" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <section class="cake-section">
+        <div id="candle-blowing-section">
+            <div class="wish-text-container">
+                <div id="wish-text-message" class="wish-text montserrat-font">Загадай бажання і спробуй задути</div>
+            </div>
+            
+            <div class="blowing-container">
+                <button id="action-button" class="action-button montserrat-font">Загадати бажання</button>
+                <div id="blowing-joke-text" class="blowing-joke" style="display: none;">(Якщо зможеш хахах)</div>
+            </div>
+            
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="plate"></div>
+                    <div class="layer layer-bottom"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-top"></div>
+                    <div class="icing"></div>
+                    <div class="drip drip1"></div>
+                    <div class="drip drip2"></div>
+                    <div class="drip drip3"></div>
+                    <!-- Свічки -->
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                    <div class="candle"><div class="flame"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="letter-button-container">
+        <button id="show-letter-button" class="letter-button montserrat-font">Лист для Олени</button>
+    </div>
+
+    <div class="audio-player">
+        <audio id="birthday-audio" loop autoplay>
+            <source src="birthday.mp3" type="audio/mpeg" />
+            Ваш браузер не підтримує аудіо-елемент.
+        </audio>
+        <audio id="applause-audio">
+            <source src="applause.mp3" type="audio/mpeg" />
+            Ваш браузер не підтримує аудіо-елемент.
+        </audio>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div id="letter-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2 class="montserrat-font">Лист для Олени</h2>
+            </div>
+            <p class="montserrat-font">
+                Дорога Олено, вітаю тебе з Днем народження! Нехай цей день буде сповнений радістю, сміхом і незабутніми моментами. Бажаю тобі безмежного щастя, міцного здоров'я та здійснення всіх твоїх найзаповітніших мрій. Ти неймовірна людина, і я дуже ціную нашу дружбу.
+            </p>
+            <p class="montserrat-font">
+                Нехай кожен твій день буде як яскраве свято, а життя дарує лише приємні сюрпризи. Залишайся такою ж щирою, доброю і життєрадісною! З Днем народження!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const candles = document.querySelectorAll(".cake .candle");
+            const actionButton = document.getElementById("action-button");
+            const wishTextMessage = document.getElementById("wish-text-message");
+            const blowingJokeText = document.getElementById("blowing-joke-text");
+            const volumeMeter = document.getElementById("volume-meter");
+            const volumeBar = document.getElementById("volume-bar");
+            let mediaStream = null;
+            let audioContext = null;
+            let analyser = null;
+            let isBlowing = false;
+
+            function calculateCandlePositions() {
+                const positions = [];
+                const centerX = 125;
+                const centerY = 47;
+                
+                positions.push({ left: centerX - 6, top: -33 });
+                
+                const innerCandleCount = 8;
+                const innerRadiusX = 50;
+                const innerRadiusY = 18;
+                for (let i = 0; i < innerCandleCount; i++) {
+                    const angle = (2 * Math.PI / innerCandleCount) * i - Math.PI / 2;
+                    const left = centerX + innerRadiusX * Math.cos(angle) - 6;
+                    const top = centerY + innerRadiusY * Math.sin(angle) - 35;
+                    positions.push({ left, top });
+                }
+                
+                const outerCandleCount = 16;
+                const outerRadiusX = 110;
+                const outerRadiusY = 40;
+                for (let i = 0; i < outerCandleCount; i++) {
+                    const angle = (2 * Math.PI / outerCandleCount) * i - Math.PI / 2;
+                    const left = centerX + outerRadiusX * Math.cos(angle) - 6;
+                    const top = centerY + outerRadiusY * Math.sin(angle) - 35;
+                    positions.push({ left, top });
+                }
+                
+                positions.sort((a, b) => a.top - b.top);
+                return positions;
+            }
+            
+            const candlePositions = calculateCandlePositions();
+            
+            candles.forEach((candle, index) => {
+                if (candlePositions[index]) {
+                    candle.style.left = `${candlePositions[index].left}px`;
+                    candle.style.top = `${candlePositions[index].top}px`;
+                    candle.style.zIndex = index + 10;
+                }
+            });
+
+            const audio = document.getElementById("birthday-audio");
+            const applauseAudio = document.getElementById("applause-audio");
+            const audioToggle = document.getElementById("audio-toggle");
+
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    audioToggle.classList.remove('fa-volume-xmark');
+                    audioToggle.classList.add('fa-music');
+                }).catch(e => {
+                    console.log("Музика не відтворилася автоматично:", e);
+                    audioToggle.classList.remove('fa-music');
+                    audioToggle.classList.add('fa-volume-xmark');
+                });
+            }
+
+            audioToggle.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    audioToggle.classList.remove('fa-volume-xmark');
+                    audioToggle.classList.add('fa-music');
+                } else {
+                    audio.pause();
+                    audioToggle.classList.remove('fa-music');
+                    audioToggle.classList.add('fa-volume-xmark');
+                }
+            });
+
+            applauseAudio.addEventListener('ended', () => {
+                audio.play();
+                audioToggle.classList.remove('fa-volume-xmark');
+                audioToggle.classList.add('fa-music');
+            });
+
+            const showVideoButton = document.getElementById('show-video-button');
+            const closeVideoButton = document.getElementById('close-video-button');
+            const videoContainer = document.getElementById('fullscreen-video-container');
+            const videoIframe = document.getElementById('fullscreen-video');
+            const videoSrc = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+            
+            showVideoButton.addEventListener('click', () => {
+                videoContainer.style.display = 'flex';
+                videoIframe.src = videoSrc;
+                audio.pause();
+            });
+
+            closeVideoButton.addEventListener('click', () => {
+                videoContainer.style.display = 'none';
+                videoIframe.src = "";
+                audio.play();
+            });
+            
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            function startCandleBlowing() {
+                actionButton.textContent = "Слухаємо...";
+                actionButton.disabled = true;
+                
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        mediaStream = stream;
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const source = audioContext.createMediaStreamSource(mediaStream);
+                        analyser = audioContext.createAnalyser();
+                        source.connect(analyser);
+                        analyser.fftSize = 512;
+                        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                        
+                        wishTextMessage.style.display = "none";
+                        actionButton.textContent = "Задувай";
+                        actionButton.classList.add('instructional');
+                        blowingJokeText.style.display = "block";
+                        isBlowing = true;
+                        volumeMeter.style.display = "block";
+                        
+                        const minVolumeThreshold = 45;
+                        const maxCandlesToBlow = 5;
+                        
+                        function processMicrophoneInput() {
+                            if (!isBlowing) {
+                                volumeMeter.style.display = "none";
+                                return;
+                            }
+                            
+                            analyser.getByteFrequencyData(dataArray);
+                            const volume = dataArray.reduce((a, b) => a + b) / dataArray.length;
+                            
+                            const volumeHeight = Math.min(volume / 255 * 100, 100);
+                            volumeBar.style.height = `${volumeHeight}%`;
+
+                            const remainingCandles = Array.from(document.querySelectorAll('.candle:not(.out)'));
+                            
+                            if (volume > minVolumeThreshold && remainingCandles.length > 0) {
+                                const volumeFactor = Math.min((volume - minVolumeThreshold) / 50, 1);
+                                const candlesToBlowOutCount = Math.floor(volumeFactor * maxCandlesToBlow);
+                                
+                                const shuffledCandles = shuffle(remainingCandles);
+                                for (let i = 0; i < candlesToBlowOutCount; i++) {
+                                    if (shuffledCandles[i]) {
+                                        shuffledCandles[i].classList.add('out');
+                                    }
+                                }
+                            }
+                            
+                            const allCandlesOut = document.querySelectorAll('.candle:not(.out)').length === 0;
+                            if (allCandlesOut) {
+                                finishBlowing();
+                            } else {
+                                requestAnimationFrame(processMicrophoneInput);
+                            }
+                        }
+                        processMicrophoneInput();
+                    })
+                    .catch(function(err) {
+                        console.error("Microphone access denied:", err);
+                        actionButton.textContent = "Доступ до мікрофона відхилено";
+                        actionButton.disabled = false;
+                        blowingJokeText.style.display = "none";
+                        wishTextMessage.style.display = "block";
+                        wishTextMessage.textContent = "Щоб задути свічки, надайте дозвіл на мікрофон";
+                        setTimeout(resetCandles, 5000);
+                    });
+            }
+
+            function finishBlowing() {
+                isBlowing = false;
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                    mediaStream = null;
+                }
+                volumeMeter.style.display = "none";
+
+                if (!audio.paused) {
+                    audio.pause();
+                }
+                
+                applauseAudio.play().catch(e => console.log("Не вдалося відтворити оплески:", e));
+                
+                wishTextMessage.textContent = "Вітаємо! Нехай всі твої бажання здійснюються.";
+                wishTextMessage.classList.add('small');
+                wishTextMessage.style.display = "block";
+                blowingJokeText.style.display = "none";
+                actionButton.textContent = "Задути свічки ще раз";
+                actionButton.classList.remove('instructional');
+                actionButton.disabled = false;
+            }
+            
+            function resetCandles() {
+                candles.forEach(candle => {
+                    candle.classList.remove("out");
+                });
+
+                if (!applauseAudio.paused) {
+                    applauseAudio.pause();
+                    applauseAudio.currentTime = 0;
+                }
+                if (audio.paused) {
+                    audio.play();
+                    audioToggle.classList.remove('fa-volume-xmark');
+                    audioToggle.classList.add('fa-music');
+                }
+
+                wishTextMessage.textContent = "Загадай бажання і спробуй задути";
+                wishTextMessage.classList.remove('small');
+                wishTextMessage.style.display = "block";
+                actionButton.textContent = "Загадати бажання";
+                actionButton.disabled = false;
+            }
+
+            actionButton.addEventListener("click", () => {
+                if (actionButton.textContent === "Задути свічки ще раз") {
+                    resetCandles();
+                } else {
+                    startCandleBlowing();
+                }
+            });
+
+            // Логіка для модального вікна
+            const letterModal = document.getElementById("letter-modal");
+            const showLetterButton = document.getElementById("show-letter-button");
+            const closeButton = document.querySelector(".close-button");
+            
+            showLetterButton.addEventListener("click", () => {
+                letterModal.style.display = "flex";
+            });
+
+            closeButton.addEventListener("click", () => {
+                letterModal.style.display = "none";
+            });
+
+            window.addEventListener("click", (event) => {
+                if (event.target === letterModal) {
+                    letterModal.style.display = "none";
+                }
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
